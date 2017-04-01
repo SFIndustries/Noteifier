@@ -1,6 +1,8 @@
 package sfi.noteifier;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -18,12 +20,22 @@ public class FretboardActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fretboard);
 
-        final TextView tv = (TextView) findViewById(R.id.textView);
+        SharedPreferences sharedPrefs = getSharedPreferences(MainActivity.PREFS_FILE_NAME, Context.MODE_PRIVATE);
+
+        final TextView tv1 = (TextView) findViewById(R.id.textView);
+        final TextView tv2 = (TextView) findViewById(R.id.textView2);
         ImageView imageFBZero = (ImageView) findViewById(R.id.imageView);
         final ImageView imageFB = (ImageView) findViewById(R.id.imageView4);
 
         final int[] viewCoords = new int[2];
         imageFB.getLocationOnScreen(viewCoords);
+
+        int tempo = sharedPrefs.getInt("tempo", 120);
+        tv1.setText(getString(R.string.tempo) + " " + Integer.toString(tempo));
+
+        int ts1 = sharedPrefs.getInt("time_signature_lower", 4);
+        int ts2 = sharedPrefs.getInt("time_signature_upper", ts1);
+        tv1.setText(getString(R.string.time_signature) + " " + Integer.toString(ts1) + "/" + Integer.toString(ts2));
 
         imageFB.setOnTouchListener(new View.OnTouchListener()
         {
@@ -43,7 +55,7 @@ public class FretboardActivity extends Activity
                     int string = (int) Math.floor(6 * (heightAdjust * touchPoint.getY()/((double) viewCoords[1] + imageFB.getHeight())))+ 1;
 
                     // tv.setText(String.valueOf(string) + " " + String.valueOf(heightAdjust * touchPoint.getY()/((double) viewCoords[1] + imageFB.getHeight())));
-                    tv.setText(String.valueOf(string) + " " + String.valueOf(fret) + " " + String.valueOf(heightAdjust));
+                    // tv.setText(String.valueOf(string) + " " + String.valueOf(fret) + " " + String.valueOf(heightAdjust));
 
                     NoteFB newNote = new NoteFB(fret, string);
 

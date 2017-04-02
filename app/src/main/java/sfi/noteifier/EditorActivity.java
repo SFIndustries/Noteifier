@@ -3,6 +3,7 @@ package sfi.noteifier;
 import android.app.Activity;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -13,10 +14,16 @@ public class EditorActivity extends Activity
     LinearLayout linearLayoutLines;
     RelativeLayout relativeLayoutSheet;
 
+    ImageView imageViewUp;
+    ImageView imageViewDown;
+    ImageView imageViewLines;
+
     int[] linearLayoutSheetCoordinates;
 
     int nLevels;
     int levelHeight;
+
+    int linesHeight;
 
     int noteHeightInLevels = 4;
 
@@ -24,7 +31,11 @@ public class EditorActivity extends Activity
     int noteWidth;
     int noteHeight;
 
-    int noteCounter;
+    static int spaceWidthPercent = 20;
+
+    int noteCounter = 1;
+
+    static float percent = 0.02f;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -36,17 +47,31 @@ public class EditorActivity extends Activity
         linearLayoutLines = (LinearLayout) findViewById(R.id.linearLayoutLines);
 
         relativeLayoutSheet = (RelativeLayout) findViewById(R.id.relativeLayoutSheet);
+
+        imageViewUp = (ImageView) findViewById(R.id.imageViewUp);
+        imageViewDown = (ImageView) findViewById(R.id.imageViewDown);
+        imageViewLines = (ImageView) findViewById(R.id.imageViewLines);
     }
 
     @Override
     public void onWindowFocusChanged (boolean hasFocus) {
 
         int sheetHeight = linearLayoutSheet.getHeight();
-        int linesHeight = linearLayoutLines.getHeight();
+        linesHeight = linearLayoutLines.getHeight();
 
-        nLevels = (int) linearLayoutSheet.getWeightSum();
+        int imageViewLinesHeight = imageViewLines.getHeight();
+        int imageViewLinesWeight = imageViewLines.getWidth();
 
-        levelHeight = sheetHeight / nLevels;
+        imageViewUp.setLayoutParams(new LinearLayout.LayoutParams(
+                imageViewLinesWeight,
+                imageViewLinesHeight));
+        imageViewDown.setLayoutParams(new LinearLayout.LayoutParams(
+                imageViewLinesWeight,
+                imageViewLinesHeight));
+
+        nLevels = (int) linearLayoutSheet.getWeightSum() * 2;
+
+        levelHeight = 2 * sheetHeight / nLevels;
         levelHeight = linesHeight / 4;
 
         BitmapFactory.Options dimensions = new BitmapFactory.Options();
@@ -62,15 +87,24 @@ public class EditorActivity extends Activity
         linearLayoutSheetCoordinates = new int[2];
         linearLayoutSheet.getLocationOnScreen(linearLayoutSheetCoordinates);
 
-        for(int i = 0; i <= nLevels; i++) {
-            addNote(i);
-        }
+//        for(int i = 0; i <= nLevels; i++) {
+//            addNote(i);
+//        }
+
+        addNote(10, R.drawable._4th_note);
+        addNote(12, R.drawable._4th_note);
+        addNote(10, R.drawable._4th_note);
+        addNote(15, R.drawable._4th_note);
+        addNote(8, R.drawable._4th_note);
+        addNote(7, R.drawable._4th_note);
+        addNote(13, R.drawable._4th_note);
+        addNote(14, R.drawable._4th_note);
 
     }
 
-    void addNote(int level) {
+    void addNote(int level, int note) {
         ImageView imageView = new ImageView(this);
-        imageView.setImageResource(R.drawable._4th_note);
+        imageView.setImageResource(note);
 
         imageView.setLayoutParams(new LinearLayout.LayoutParams(
                 noteWidth,
@@ -81,8 +115,10 @@ public class EditorActivity extends Activity
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(noteWidth, noteHeight);
         relativeLayoutSheet.addView(imageView, params);
 
-        imageView.setX(noteCounter++ * noteWidth);
-        imageView.setY((nLevels - level) * levelHeight - noteHeight);
+        imageView.setX(noteCounter * noteWidth);
+        imageView.setY((nLevels - level) * levelHeight/2 - noteHeight + percent*linesHeight);
 
+        noteCounter += 2;
     }
+
 }

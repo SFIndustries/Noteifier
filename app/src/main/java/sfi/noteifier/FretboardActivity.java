@@ -33,6 +33,16 @@ public class FretboardActivity extends Activity
 
                 if (event.getAction() == MotionEvent.ACTION_DOWN)
                 {
+                    // mislim da ova klasa nema smisla
+                    // jer se jedino koristi na ovom mjestu
+                    // i s tim objektom se jedino radi jedno oduzimanje
+                    // tak da prakticki se samo radi set() pa get()
+                    // dovoljno je da x i y budu lokalne varijable
+
+                    // int x = event.getX() - viewCoords[0];
+                    // int y = event.getY() - viewCoords[1];
+                    // ...
+
                     Point2D touchPoint = new Point2D(event.getX(), event.getY());
                     touchPoint.sub((double) viewCoords[0], (double) viewCoords[1]);
 

@@ -25,19 +25,21 @@
             android:text="@string/add_new"
             android:textAlignment="center"
             android:textAppearance="@android:style/TextAppearance.DeviceDefault.Widget.Button" />
-    </LinearLayout>
-        android:orientation="horizontal">
 
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="vertical" />
-        </HorizontalScrollView>
     </LinearLayout>
+
+        <!--android:orientation="horizontal">-->
+
+        <!--<HorizontalScrollView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent">-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:orientation="vertical" />-->
+        <!--</HorizontalScrollView>-->
+    <!--</LinearLayout>-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -182,4 +184,5 @@
         android:layout_height="0dp"
         android:layout_weight="0.1"
         android:orientation="horizontal"></LinearLayout>
+
 </LinearLayout>

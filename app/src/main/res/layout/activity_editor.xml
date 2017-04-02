@@ -18,17 +18,118 @@
         android:weightSum="60">
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnAddNew"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="12"
-            android:text="@string/add_new"
+            android:text="@string/record"
             android:textAlignment="center"
             android:textAppearance="@android:style/TextAppearance.DeviceDefault.Widget.Button" />
 
+        <ImageView
+            android:id="@+id/imgLine1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:adjustViewBounds="false"
+            android:background="@drawable/line_vertical"
+            android:scaleType="fitXY" />
+
+        <ImageButton
+            android:id="@+id/btnMetronome"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="6"
+            android:adjustViewBounds="false"
+            android:scaleType="fitCenter"
+            android:src="@drawable/metronome" />
+
+        <TextView
+            android:id="@+id/tvTempo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:text="120"
+            android:textAlignment="center"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Widget.TextView.SpinnerItem"
+            android:textColor="@android:color/background_dark" />
+
+        <ImageView
+            android:id="@+id/imgLine2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:adjustViewBounds="false"
+            android:background="@drawable/line_vertical"
+            android:scaleType="fitXY" />
+
+        <ImageButton
+            android:id="@+id/btnNoteDurationUp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:adjustViewBounds="false"
+            android:scaleType="fitCenter"
+            android:src="@drawable/down_black_arrow" />
+
+        <ImageView
+            android:id="@+id/imgNoteDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:adjustViewBounds="false"
+            android:cropToPadding="false"
+            android:paddingBottom="5dp"
+            android:paddingTop="3dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/_4th_note_1_4" />
+
+        <ImageButton
+            android:id="@+id/btnNoteDurationDown"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:adjustViewBounds="false"
+            android:scaleType="fitCenter"
+            android:src="@drawable/up_black_arrow" />
+
+        <ImageView
+            android:id="@+id/imgLine3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:adjustViewBounds="false"
+            android:background="@drawable/line_vertical"
+            android:scaleType="fitXY" />
+
+        <ImageButton
+            android:id="@+id/btnNoteFlat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:scaleType="fitCenter"
+            android:src="@drawable/flat_note" />
+
+        <ImageButton
+            android:id="@+id/btnNoteSharp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:scaleType="fitCenter"
+            android:src="@drawable/hash" />
+
+        <ImageView
+            android:id="@+id/imgLine4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:adjustViewBounds="false"
+            android:background="@drawable/line_vertical"
+            android:scaleType="fitXY" />
+
     </LinearLayout>
 
-        <!--android:orientation="horizontal">-->
+    <!--android:orientation="horizontal">-->
 
         <!--<HorizontalScrollView-->
             <!--android:layout_width="match_parent"-->

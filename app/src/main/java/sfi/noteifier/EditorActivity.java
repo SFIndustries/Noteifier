@@ -1,15 +1,20 @@
 package sfi.noteifier;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-public class EditorActivity extends Activity
-{
+public class EditorActivity extends Activity {
+
+    Button btnAddNew;
+
     LinearLayout linearLayoutSheet;
     LinearLayout linearLayoutLines;
     RelativeLayout relativeLayoutSheet;
@@ -38,10 +43,18 @@ public class EditorActivity extends Activity
     static float percent = 0.02f;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
+
+        btnAddNew = (Button) findViewById(R.id.btnAddNew);
+
+        btnAddNew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(EditorActivity.this, FretboardActivity.class));
+            }
+        });
 
         linearLayoutSheet = (LinearLayout) findViewById(R.id.linearLayoutSheet);
         linearLayoutLines = (LinearLayout) findViewById(R.id.linearLayoutLines);

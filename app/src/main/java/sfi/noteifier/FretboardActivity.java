@@ -35,7 +35,7 @@ public class FretboardActivity extends Activity
 
         int ts1 = sharedPrefs.getInt("time_signature_lower", 4);
         int ts2 = sharedPrefs.getInt("time_signature_upper", ts1);
-        tv1.setText(getString(R.string.time_signature) + " " + Integer.toString(ts1) + "/" + Integer.toString(ts2));
+        tv2.setText(getString(R.string.time_signature) + " " + Integer.toString(ts1) + "/" + Integer.toString(ts2));
 
         imageFB.setOnTouchListener(new View.OnTouchListener()
         {
